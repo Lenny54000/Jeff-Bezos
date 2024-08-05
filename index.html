@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation de Déformation d'Image avec Effets Multiples</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        img {
+            width: 195px;
+            height: 259px;
+            transition: all 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <img id="image" src="image.jpeg" alt="Image">
+    <script>
+        let image = document.getElementById('image');
+        let step = 0;
+
+        function animate() {
+            switch(step) {
+                case 0:
+                    image.style.width = '390px'; // Déformer en largeur
+                    image.style.height = '259px';
+                    image.style.transform = 'rotate(15deg)';
+                    image.style.opacity = '0.8';
+                    image.style.filter = 'brightness(1.2)';
+                    break;
+                case 1:
+                    image.style.width = '195px'; // Revenir à la taille d'origine
+                    image.style.height = '259px';
+                    image.style.transform = 'rotate(0deg)';
+                    image.style.opacity = '1';
+                    image.style.filter = 'none';
+                    break;
+                case 2:
+                    image.style.width = '195px';
+                    image.style.height = '518px'; // Déformer en hauteur
+                    image.style.transform = 'rotate(-15deg)';
+                    image.style.opacity = '0.8';
+                    image.style.filter = 'contrast(1.5)';
+                    break;
+                case 3:
+                    image.style.width = '195px'; // Revenir à la taille d'origine
+                    image.style.height = '259px';
+                    image.style.transform = 'rotate(0deg)';
+                    image.style.opacity = '1';
+                    image.style.filter = 'none';
+                    break;
+                case 4:
+                    image.style.width = '300px'; // Augmenter la taille et ajouter une ombre
+                    image.style.height = '400px';
+                    image.style.boxShadow = '10px 10px 20px rgba(0, 0, 0, 0.5)';
+                    image.style.filter = 'sepia(1)';
+                    break;
+                case 5:
+                    image.style.width = '195px'; // Revenir à la taille d'origine
+                    image.style.height = '259px';
+                    image.style.boxShadow = 'none';
+                    image.style.filter = 'none';
+                    break;
+                case 6:
+                    image.style.transform = 'rotate(360deg) scale(1.2)'; // Rotation complète et agrandissement
+                    image.style.filter = 'hue-rotate(90deg)';
+                    break;
+                case 7:
+                    image.style.transform = 'rotate(0deg) scale(1)'; // Revenir à la normale
+                    image.style.filter = 'none';
+                    break;
+                case 8:
+                    image.style.transform = 'skew(20deg, 20deg)'; // Inclinaison de l'image
+                    image.style.filter = 'invert(1)';
+                    break;
+                case 9:
+                    image.style.transform = 'skew(0deg, 0deg)'; // Revenir à la normale
+                    image.style.filter = 'none';
+                    break;
+                case 10:
+                    image.style.transform = 'rotate(45deg) translateX(50px)'; // Rotation et translation
+                    image.style.filter = 'blur(5px)';
+                    break;
+                case 11:
+                    image.style.transform = 'rotate(0deg) translateX(0px)'; // Revenir à la normale
+                    image.style.filter = 'none';
+                    break;
+                case 12:
+                    image.style.transform = 'scale(0.5)'; // Réduction de l'échelle
+                    image.style.filter = 'grayscale(1)';
+                    break;
+                case 13:
+                    image.style.transform = 'scale(1)'; // Revenir à la taille d'origine
+                    image.style.filter = 'none';
+                    break;
+                case 14:
+                    image.style.transform = 'rotateY(180deg)'; // Rotation 3D
+                    image.style.filter = 'opacity(0.5)';
+                    break;
+                case 15:
+                    image.style.transform = 'rotateY(0deg)'; // Revenir à la normale
+                    image.style.filter = 'opacity(1)';
+                    break;
+            }
+
+            step = (step + 1) % 16; // Passer à l'étape suivante, revenir à 0 après l'étape 15
+
+            setTimeout(animate, 1000);
+        }
+
+        setTimeout(animate, 1000);
+    </script>
+</body>
+</html>
